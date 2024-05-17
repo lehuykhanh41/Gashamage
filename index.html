@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GASHAMAGE</title>
+    <link rel= "stylesheet" href="style.css"></link>
+  </head>
+
+  <body>
+
+    <div id="backupCodeTables" style="position: absolute; width: 40%; height: 50%; top: 30%; left: 31%; color: white; font-size: 20px; text-align: center; font-weight: bolder; background-color: rgba(0, 0, 0, 0.95); border: 6px solid silver; border-radius: 10%; z-index: 12; display: none;">
+      <p style="font-size: 30px;">GIFT CODE:</p>
+
+      <br><br>
+  
+      <input type="text" id="backupCodeFromPlayer" placeholder="Enter code:">
+      
+      <button class="functionButton" style="width: 30%; height: 8%; left: 35%; top: 50%;" onclick="evaluateBackupCode()">PROCEED</button>
+      <br>
+      <button class="functionButton" style="width: 15%; height: 8%; left: 42.5%; bottom: 4%;" onclick="closeBackupMenu()">BACK</button>
+      
+  
+      </div>
+
+
+      <!--------------------------------------------->
+
+    <div id="mainScreen" class="prevent-select" onclick="activateGameFirstTime()">
+
+      <img id="titlePlaceHolder" src="./Image/Gashamage1.png" style="position:absolute; width: 85%; left: 10%; top: 3%;">
+      <div id="firstMessage" class="firstMessageClass">CLICK TO CONTINUE</div>
+
+      <!------------------------------------------------>
+
+    <div id="titleScreen">
+      <img src="./Image/Gashamage1.png" style="position:absolute; width: 85%; left: 10%; top: 3%;">
+      <button class="gameplayButton" onmouseenter="playHoverSound()" onclick="activateGameScreenThroughSkillScreen()">START GAME</button>
+      <button class="titleButton" onmouseenter="playHoverSound()" style="top: 81%; left: 40.5%;" onclick="goToScreen('titleScreen', 'skillScreen')">SKILL EQUIP</button>
+      <button class="titleButton" onmouseenter="playHoverSound()" style="top: 81%; left: 8%;" onclick="goToScreen('titleScreen', 'shopScreen')">SHOP</button>
+      <button class="titleButton" onmouseenter="playHoverSound()" style="top: 81%; left: 75%;" onclick="goToScreen('titleScreen', 'monsterScreen')">MONSTER RECORD</button>
+      
+      <button class="titleButton" style="top: 95%; left: 13%; width: 10%; height: 3%; font-size: 14px;" onmouseenter="playHoverSound()" onclick="openSettingsMenu()">SETTINGS</button>
+      <button class="titleButton" style="top: 95%; right: 9.5%; width: 10%; height: 3%; font-size: 14px; display: block;" onmouseenter="playHoverSound()" onclick="openBackupMenu()">GIFT CODE</button>
+
+    </div>
+
+    <div id="settingTables" style="position: absolute; width: 40%; height: 50%; top: 30%; left: 31%; color: white; font-size: 20px; text-align: center; font-weight: bolder; background-color: rgba(0, 0, 0, 0.95); border: 6px solid silver; border-radius: 10%; z-index: 12; display: none;">
+    <p style="font-size: 30px;">SETTINGS</p>
+    
+    <p>MUSIC VOLUME</p>
+    <button class="functionButton" style="width: 30%; height: 9%; left: 35%;" onclick="toggleVolume()">ON / OFF</button>
+
+    <br>
+
+    <p>SOUND EFFECTS</p>
+    <button class="functionButton" style="width: 30%; height: 9%; left: 35%" onclick="toggleSFX()">ON / OFF</button>
+
+    
+    <button class="functionButton" style="width: 15%; height: 8%; left: 42.5%; bottom: 4%;" onclick="closeSettingsMenu()">BACK</button>
+    
+
+    </div>
+
+    <!------------------------------------------------>
+
+    
+
+    <div id="skillScreen">
+    <button class="functionButton" onmouseenter="playHoverSound()" style="left: 2%; top: 2%;" onclick="goToScreen('skillScreen', 'titleScreen')">BACK</button>
+    <div id="skillScreenTitle" style="position: absolute; width: 50%; height: 60px; top: 2%; left: 25%; background-image: url(./Image/SkillNEquipment.png); background-size: 100%;"></div>
+ 
+    <button id="startGameFromSkillScreenBTN" onmouseenter="playHoverSound()" class="titleButton" style="top: 2%; right: 2%; height: 11%; font-size: 40px; display: none;" onclick="startGameFromSkillScreen()">START GAME</button>
+  
+    <div id="moneyAndDiamonds" style="position: absolute; width: 150px; height: 70px; right: 1.5%; top: 2%; font-size: 20px; font-family: Georgia; font-weight: bolder; border: 2px solid black; background-color: rgba(0, 0, 0, 0.8);">
+      🪙:<span id="myGold" style="float: right">1000</span><br>
+      💎:<span id="myDiamond" style="float: right;">1000</span><br>
+      ☘️:<span id="myBlessing" style="float: right;">1000</span><br>
+
+    </div>
+    
+    <button class="catego1" style="position: absolute; border: 3px solid yellow; top: 10%; width: 21%; height: 5%; left: 2%; color: white; font-family: Georgia; font-size: 20px; font-weight: bolder;" onmouseenter="playHoverSound()" onclick="viewSkillsMenu()">SKILLS</button>
+    <button class="catego2" style="position: absolute; border: 3px solid red; top: 10%; width: 21%; height: 5%; left: 23%; color: white; font-family: Georgia; font-size: 20px; font-weight: bolder;" onmouseenter="playHoverSound()" onclick="viewWeaponsMenu()">WEAPON</button>
+    <button class="catego3" style="position: absolute; border: 3px solid green; top: 10%; width: 21.5%; height: 5%; left: 44%; color: white; font-family: Georgia; font-size: 20px; font-weight: bolder;" onmouseenter="playHoverSound()" onclick="viewGemstonesMenu();">GEMSTONE</button>
+    
+    <div id="storage">
+
+      <div class="storageTable">
+        
+        <!--MAXIMUM 6 ROW, 8 COLUMN-->
+        <table id="skillTable">
+  
+          <tr class="tableRowInfo">
+            <td class="tableDataInfo" id="sk0display" onclick="displaySkillInScreen(0)"></td>
+            <td class="tableDataInfo" id="sk1display" onclick="displaySkillInScreen(1)"></td>
+            <td class="tableDataInfo" id="sk2display" onclick="displaySkillInScreen(2)"></td>
+            <td class="tableDataInfo" id="sk3display" onclick="displaySkillInScreen(3)"></td>
+            <td class="tableDataInfo" id="sk4display" onclick="displaySkillInScreen(4)"></td>
+            <td class="tableDataInfo" id="sk5display" onclick="displaySkillInScreen(5)"></td>
+            <td class="tableDataInfo" id="sk6display" onclick="displaySkillInScreen(6)"></td>
+            <td class="tableDataInfo" id="sk7display" onclick="displaySkillInScreen(7)"></td>
+          <tr>
+            
+            <tr class="tableRowInfo">
+              <td class="tableDataInfo" id="sk8display" onclick="displaySkillInScreen(8)"></td>
+              <td class="tableDataInfo" id="sk9display" onclick="displaySkillInScreen(9)"></td>
+              <td class="tableDataInfo" id="sk10display"onclick="displaySkillInScreen(10)"></td>
+              <td class="tableDataInfo" id="sk11display" onclick="displaySkillInScreen(11)"></td>
+              <td class="tableDataInfo" id="sk12display" onclick="displaySkillInScreen(12)"></td>
+              <td class="tableDataInfo" id="sk13display" onclick="displaySkillInScreen(13)"></td>
+            <tr>
+
+        </table>
+
+
+        <table id="weaponTable">
+  
+          <tr class="tableRowInfo">
+            <td class="tableDataInfo" id="sk0displayWP" onclick="displayWeaponInScreen(0)"></td>
+            <td class="tableDataInfo" id="sk1displayWP" onclick="displayWeaponInScreen(1)"></td>
+            <td class="tableDataInfo" id="sk2displayWP" onclick="displayWeaponInScreen(2)"></td>
+            <td class="tableDataInfo" id="sk3displayWP" onclick="displayWeaponInScreen(3)"></td>
+          <tr>
+              
+        </table>
+
+        </div>
+
+      </div>
+
+
+      <div id="cardView">
+        <div id="skillCardDizplay">
+          <div id="skillScreenCardName">???</div>
+          <hr style="position: absolute; width: 100%; top: 8%; border-radius: 50%;">
+          <div id="skillScreenCardRarity"></div>
+          <hr style="position: absolute;width: 100%;top: 14%;border-radius: 50%;">
+          <div id="skillScreenCardsrc"></div>
+          <div id="skillScreenCardLevel">LEVEL <span id="SKSClevel">???</span></div>
+          
+          <div id="skillScreenCardAmount">
+            <div id="amountDizplay" style="z-index: 1;"></div>
+            <div id="amountInfo"><span id="currAmnt" style="z-index: 4">?</span> / <span id="nextLVAmnt" style="z-index: 4;">?</span></div>
+          </div>
+
+          <div id="skillScreenCardInfo"></div>
+
+          <div id="skillScreenCardStats">
+            COOLDOWN: <span id = "SKSCcooldown">???</span> seconds.<br>
+            EFFECt AREA: <span id = "SKSCeffectArea">???</span><br>
+          </div>
+
+          <hr id="SKSCdivider1">
+
+          <button class="functionButton" id="equipSkillButton" style="width: 130px; height: 40px; top: 76%; left: 34%; display: none; " onmouseenter="playHoverSound()" onclick="showSkillSlot()">EQUIP</button>
+          
+          <div id="chooseSlot">
+            <span id="atASlot">AT SLOT:</span>
+            <button class="slotButton" id="eSlot1" style="top: 45%; left: 0%" onclick="equipSkill(0)"></button>
+            <button class="slotButton" id="eSlot2" style="top: 45%; left: 40%" onclick="equipSkill(1)"></button>
+            <button class="slotButton" id="eSlot3" style="top: 45%; left: 80%" onclick="equipSkill(2)"></button>
+          </div>
+        
+      </div>
+
+
+      <div id="weaponCardDizplay">
+        <div id="weaponCardName">???</div>
+        <div id="weaponCardsrc"></div>
+        <div id="weaponCardLevel">LEVEL <span id="WPlevel">???</span></div>
+      
+
+        <div id="weaponCardInfo">Originally belongs to the hunter mages, now this staff has also been ultilized in battles. Requiring high precision, each shot from this staff hits harder than anything else. </div>
+
+        <div id="weaponCardStats">
+          DAMAGE: <span id = "wpATK">???</span><br>
+          FIRE RATE: <span id = "wpFR">???</span><br>
+          BULLET SPEED: <span id = "wpBS">???</span><br>
+          NUMS OF BULLETS: <span id = "wpAmnt">???</span><br> 
+        </div>
+
+        <hr class="WPdivider1" style="position: absolute; top:63%; width: 100%; border-radius: 50%;">
+
+        <button class="functionButton" id="equipWeaponButton" style="width: 130px; height: 50px; top: 66%; left: 10%;" onmouseenter="playHoverSound()" onclick="equipWeapon()">EQUIP</button>
+        <button class="functionButton" id="upgradeWeaponButton" style="width: 130px; height: 50px; top: 66%; left: 60%; font-size: 18px;" onmouseenter="playHoverSound()" onclick="upgradeWeapon()">UPGRADE<br> (🪙 990099)</button>
+        <button class="functionButton" id="unlockWeaponButton" style="width: 160px; height: 50px; top: 66%; left: 30%; font-size: 18px; display: none;" onmouseenter="playHoverSound()" onclick="unlockWeapon()">UNLOCK<br> (🪙 990099)</button>
+        
+        <hr class="WPdivider2" style="position: absolute; top:75%; width: 100%; border-radius: 50%;">
+        
+        <div id="weaponUniqueSkill">
+          <span style="font-size: 20px; font-family: Impact;">UNIQUE ABILITY</span>
+
+          <div style="position: absolute; width: 94%; height: 85px; top: 22%; left: 3%; border: 3px solid gold">
+          <img id="WPSkillIcon" src="./Weapon_Icon/WP0.png" style="position: absolute; width: 85px; height: 83px; top: 0%; left: 0%; border: 2px solid gold;">
+          <div style="position: absolute; width: 76%; left: 85px">
+            <span id="WPSkillName" style="font-family: Impact; font-size: 20px;">QUICK SWAP</span><br>
+            <span id="WPSkillData" style="font-family: Georgia; font-size: 15px;">Press the skill button to swap between melee mode and ranged mode.</span>
+          </div>
+          </div>
+          <div id="wpSkillLocked" style="display: block;"><br>
+            UNLOCK AT WEAPON LV <span id="wpSkillUnlockLevel">5</span>
+          </div>
+
+
+          </div>
+        </div>
+        
+      </div>
+
+
+      </div>
+    
+ <!------------------------------------------------>
+
+ <div id="monsterScreen" style="display:none;">
+  <button class="functionButton" onmouseenter="playHoverSound()" style="left: 2%; top: 2%;" onclick="goToScreen('monsterScreen', 'titleScreen')">BACK</button>
+  <div id="monsterRecordTitle" style="position: absolute; width: 50%; height: 60px; top: 2%; left: 25%; background-image: url(./Image/monsterRecordTitle.png); background-size: 100%;"></div>
+  
+  
+  <div id="monsterStorage">
+
+    <div class="storageTable">
+      
+      <!--MAXIMUM 6 ROW, 8 COLUMN-->
+      <table id="monsterTable" style="border-spacing: 15px 5px;">
+
+        <tr class="tableRowInfo">
+          <td class="tableDataInfo" id="monster0display" onclick="displayMonster(0)"></td>
+          <td class="tableDataInfo" id="monster1display" onclick="displayMonster(1)"></td>
+          <td class="tableDataInfo" id="monster2display" onclick="displayMonster(2)"></td>
+          <td class="tableDataInfo" id="monster3display" onclick="displayMonster(3)"></td>
+          <td class="tableDataInfo" id="monster4display" onclick="displayMonster(4)"></td>
+          <td class="tableDataInfo" id="monster5display" onclick="displayMonster(5)"></td>
+        <tr>
+        </table>
+
+    </div>
+    </div>
+
+
+    <div id="monsterCardView">
+   
+        <div id="monsterCardName" style="position:absolute; width: 100%; height: 10%; font-family: Georgia; font-weight: bolder; font-size: 29px; text-align: center; top: 2%;">?????</div>
+        <hr style="position: absolute; width: 100%; top: 8%; border-radius: 50%;">
+        <div id="monsterCardType" style="position:absolute; width: 100%; height: 10%; font-family: Georgia; font-weight: bolder; font-size: 20px; text-align: center; top: 10%;">?????</div>
+        <hr style="position: absolute;width: 100%;top: 13%;border-radius: 50%;">
+        <div id="monsterCardsrc" style="position: absolute; width: 150px; height: 150px; background-size: 100%; top: 20%; left: 30%; border: 3px solid silver"></div>
+
+        <div id="monsterCardInfo" style="position:absolute; width: 90%; height: 50%; font-family: Georgia; font-size: 16px; text-align: center; top: 50%;left: 5%; font-style: italic;">ELIMINATE <span id="monsterToKill">200</span> MONSTERS TO UNLOCK THESE DATA</div>
+
+        <hr style="position: absolute;width: 100%;top: 70%;border-radius: 50%;">
+        <div id="monsterCardStats" style="position:absolute; width: 100%; height: 10%; font-family: Georgia; font-weight: bolder; font-size: 18px; text-align: center; top: 75%;">
+          BASE HP: <span id = "monsterHP">???</span> <br>
+          BASE DAMAGE: <span id = "monsterDamage">???</span><br>
+          SPEED: <span id = "monsterSpeed">???</span><br>
+          TARGET: <span id = "monsterTarget">???</span><br>
+        </div>
+
+</div>
+
+  </div>
+
+
+
+
+
+ <!------------------------------------------------>
+
+
+ <div id="shopScreen">
+  <button class="functionButton" style="left: 2%; top: 2%;" onmouseenter="playHoverSound()" onclick="goToScreen('shopScreen', 'titleScreen')">BACK</button>
+  <div style="position: absolute; width: 55%; height: 65px; top: 1%; left: 24%; background-image: url(./Image/ShopNGachas.png); background-size: 100%;"></div>
+
+  <div id="moneyAndDiamonds2" style="position: absolute; width: 150px; height: 70px; right: 1.5%; top: 2%; font-size: 20px; font-family: Georgia; font-weight: bolder; border: 2px solid black; background-color: rgba(0, 0, 0, 0.8);">
+    🪙:<span id="myGold2" style="float: right">1000</span><br>
+    💎:<span id="myDiamond2" style="float: right;">1000</span><br>
+    ☘️:<span id="myBlessing2" style="float: right;">1000</span><br>
+  </div>
+
+  <div id="goGacha" class="gachaButton" style="position:absolute; width: 30%; height: 10%; top: 15%; border: 4px solid gold; border-radius: 10%; left: 10%; display: block;" onmouseenter="playHoverSound()" onclick="openGachaMenu()"> 
+    <img src="./Image/SummonText.png" style="position: absolute; height: 55%; width: 65%; left: 17.5%;">
+    <img src="./Image/SummonSideText2.png" style="position: absolute; height: 30%; width: 90%; top: 60%; left: 5%;">
+  </div>
+
+  <div id="gachaMenu" class="gachaMenuClass">
+
+
+    <img id="bannerImage" src="./Image/Banner/banner1.png" style="position: absolute; background-color: white; width: 280px; height: 375px; top: 7%; left: 14%;"></img>
+
+    <button style="width: 50px; height: 50px; top: 40%; position: absolute; background-image: url('./Image/arrowLeft.png'); background-size: 100%; background-color: transparent; border: none" onclick="swapGacha(-1)"></button>
+    <button style="width: 50px; height: 50px; top: 40%; right: 0%; position: absolute; background-image: url('./Image/arrowRight.png'); background-size: 100%; background-color: transparent; border: none" onclick="swapGacha(1)"></button>
+
+    <button class="functionButton2" style="width: 37%; height: 10%; left: 8%; top: 78.5%; font-size: 18px;" onmouseenter="playHoverSound()" onclick="gachaProceed(1)">OPEN x1 <br>(💎 1)</button>
+    <button class="functionButton2" style="width: 37%; height: 10%; right: 8%; top: 78.5%; font-size: 18px;" onmouseenter="playHoverSound()" onclick="gachaProceed(10)">OPEN x10 <br>(💎 10)</button>
+    
+    <button class="functionButton" style="width: 30%; height: 5%; left: 33%; bottom: 2%;" onmouseenter="playHoverSound()" onclick="noMoreGacha()">BACK</button>
+
+    <button class="functionButton" style="width: 25px; height: 25px; right: 2%; bottom: 2%; border-radius:50%;" onmouseenter="playHoverSound()" onclick="revealDropRate()">i</button>
+
+    <div id="showDropRate" class="hideBoard" style="position: absolute; top: 15%; width: 99%; height: 73%; background-color: rgba(0, 0, 0, 0.95); border: 2px solid white; text-align: center; font-size: 19px;">
+    <p style="font-weight: bolder; font-family: Georgia; font-size: 24px;"> DROP RATES</p>
+
+    <p><span style="color: green; font-weight: bolder; font-family: Georgia;">COMMON</span>: 66%</p>
+    <p><span style="color: rgb(0, 100, 255); font-weight: bolder; font-family: Georgia;">RARE</span>: 25%</p>
+    <p><span style="color: rgb(150, 0, 255); font-weight: bolder; font-family: Georgia;">SUPER RARE</span>: 8%</p>
+    <p><span style="color: red; font-weight: bolder; font-family: Georgia;">LEGENDARY</span>: 1%</p>
+    <br>
+    <p style="font-style: italic">100% GUARANTEE A <span style="color: red">LEGENDARY</span> AFTER 80 OPENS.</p>
+    <br>
+    <p style="font-size: 14px;">(Press the "i" icon at the bottom right corner to close)</p>
+    </div>
+  </div>
+
+
+  
+  
+  <div id="shopStorage">
+
+
+    <div class="storageTable">
+      
+      <!--MAXIMUM 3 ROW, 3 COLUMN-->
+      <table id="shopTable">
+
+        <tr class="shopRowInfo">
+          <td class="shopDataInfo" id="shop0display" onclick="purchase(0)">
+            <div style="width: 150px; height: 150px">
+              <div id="shop0Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+              <img id="shop0Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+              <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">🪙 <span id="shop0Cost">500</span></div>
+              <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop0Remaining">3</span></div>
+            </div>
+          </td>
+
+          <td class="shopDataInfo" id="shop1display" onclick="purchase(1)">
+            <div style="width: 150px; height: 150px">
+              <div id="shop1Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+              <img id="shop1Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+              <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">🪙 <span id="shop1Cost">500</span></div>
+              <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop1Remaining">3</span></div>
+            </div>
+          </td>
+          <td class="shopDataInfo" id="shop2display" onclick="purchase(2)">
+            <div style="width: 150px; height: 150px">
+              <div id="shop2Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+              <img id="shop2Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+              <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">🪙 <span id="shop2Cost">500</span></div>
+              <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop2Remaining">3</span></div>
+            </div></td>
+        <tr>
+          
+      <tr class="shopRowInfo">
+        <td class="shopDataInfo" id="shop3display" onclick="purchase(3)">
+          <div style="width: 150px; height: 150px">
+            <div id="shop3Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+            <img id="shop3Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+            <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">🪙 <span id="shop3Cost">500</span></div>
+            <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop3Remaining">3</span></div>
+          </div></td>
+
+        <td class="shopDataInfo" id="shop4display" onclick="purchase(4)">
+          <div style="width: 150px; height: 150px">
+            <div id="shop4Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+            <img id="shop4Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+            <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">🪙 <span id="shop4Cost">500</span></div>
+            <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop4Remaining">3</span></div>
+          </div></td>
+        <td class="shopDataInfo" id="shop5display" onclick="purchase(5)">
+          <div style="width: 150px; height: 150px">
+            <div id="shop5Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+            <img id="shop5Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+            <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">🪙 <span id="shop5Cost">500</span></div>
+            <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop5Remaining">3</span></div>
+          </div></td>
+      <tr>
+
+    <tr class="shopRowInfo">
+        <td class="shopDataInfo" id="shop6display" onclick="purchase(6)">
+          <div style="width: 150px; height: 150px">
+            <div id="shop6Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+            <img id="shop6Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+            <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">☘️ <span id="shop6Cost">500</span></div>
+            <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop6Remaining">3</span></div>
+          </div></td>
+        <td class="shopDataInfo" id="shop7display" onclick="purchase(7)">
+          <div style="width: 150px; height: 150px">
+            <div id="shop7Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+            <img id="shop7Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+            <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">☘️ <span id="shop7Cost">500</span></div>
+            <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop7Remaining">3</span></div>
+          </div></td>
+
+        <td class="shopDataInfo" id="shop8display" onclick="purchase(8)">
+          <div style="width: 150px; height: 150px">
+            <div id="shop8Name" style="width: 100%; font-size: 11px; font-weight: bolder; font-family: Georgia; height: 20px; top: 20px; text-align: center;">DEMONIC ERASER</div>
+            <img id="shop8Img" style="position: relative; width: 80px; height: 80px; top: 0px; left: 40px;" src="./Skill_Icon/sk0.png">
+            <div style="width: 150px; font-size: 18px; font-weight: bolder; font-family: Georgia; height: 30px; top: 120px; text-align: center; left: 40px;">☘️ <span id="shop8Cost">500</span></div>
+            <div style="width: 150px; font-size: 12px; font-weight: bolder; font-family: Georgia; height: 30px; top: 146px; text-align: center; left: 50px;">REMAINING: <span id="shop8Remaining">3</span></div>
+          </div></td>
+    <tr>
+
+      </table>
+
+
+      </div>
+
+    </div>
+
+    <button class="functionButton" style="width: 20%; height: 6%; top: 92%; right: 2%" onmouseenter="playHoverSound()" onclick="rerollShopItem()">REROLL (🪙 500)</span></button>
+
+    <div style="position: absolute; width: 40%; height: 6%; top: 94%; right: 12%; font-weight: bold; font-family: Georgia; font-size: 20px; color: white;">SHOP RESETS IN <span id="howManyTimesTillReset">5</span> GAMES</div>
+
+    <div id="confirmPurchase" style="border-radius: 5%; width: 80%; height: 18%; top: 40%; left: 10%; position: absolute; background-color: rgba(0, 0, 0, 0.8); text-align: center; padding-top: 2%; font-size: 28px; font-family: Georgia; border: 6px solid silver; display: none; border-radius: 10%">Do you want to purchase <span id="itemToBePurchased" style="font-weight: bolder;"></span> for <span id="itemToBePurchasedCost" style="font-weight: bolder"></span>?
+    <button id="purchaseConfirm" class="functionButton" style="width: 20%; height: 32%; top: 60%; left: 20%;" onmouseenter="playHoverSound()" onclick="confirmPurchase()">CONFIRM</button>
+    <button id="purchaseCancel" class="functionButton" style="width: 20%; height: 32%; top: 60%; left: 60%; background: red;" onmouseenter="playHoverSound()" onclick="cancelPurchase()">CANCEL</button>
+    </div>
+  
+
+    </div>
+
+
+    <div id="levelUpNotice" style="border-radius: 5%; color: white; width: 80%; height: 22%; top: 40%; left: 10%; position: absolute; background-color: rgba(0, 0, 0, 0.95); text-align: center; padding-top: 2%; font-size: 28px; font-family: Georgia; border: 6px solid gold; display: none; border-radius: 10%; z-index: 12;"><span id="leveledUpCardName" style="font-weight: bolder;"></span> HAS REACHED LEVEL <span id="leveledUpCardLevel" style="font-weight: bolder"></span>
+      <img id="leveledUpCardSRC" src="./Skill_Icon/sk0.png" style="position: absolute; width: 100px; height: 100px; top: 40%; left: 45%;">
+     </div>
+
+     <div id="unlockNotice" style="border-radius: 5%; color: white; width: 80%; height: 22%; top: 40%; left: 10%; position: absolute; background-color: rgba(0, 0, 0, 0.95); text-align: center; padding-top: 2%; font-size: 28px; font-family: Georgia; border: 6px solid gold; display: none; border-radius: 10%; z-index: 12;"><span id="unlockedCardName" style="font-weight: bolder;"></span> HAS BEEN UNLOCKED</span>
+      <img id="unlockedCardSRC" src="./Skill_Icon/sk0.png" style="position: absolute; width: 100px; height: 100px; top: 40%; left: 45%;">
+     </div>
+
+     <div id="generalNotice" style="border-radius: 5%; color: white; width: 80%; height: 18%; top: 40%; left: 10%; position: absolute; background-color: rgba(0, 0, 0, 0.95); text-align: center; padding-top: 2%; font-size: 28px; font-family: Georgia; border: 6px solid gold; display: none; border-radius: 10%; z-index: 12;">
+      
+     </div>
+
+
+    <div id="gachaScreen" style="display: none;">
+
+      <div id="gachaDisplay" style="display: none;">
+      <video id="commonGacha" width="1280" height="720" style="display: none;">
+        <source src="./Gacha_Animation/onlyCommonGacha.mp4" type="video/mp4">
+      </video>
+
+      <video id="rareGacha" width="1280" height="720" style="display: none;">
+        <source src="./Gacha_Animation/onlyRareGacha.mp4" type="video/mp4">
+      </video>
+
+      <video id="SRGacha" width="1280" height="720" style="display: none;">
+        <source src="./Gacha_Animation/SRGacha.mp4" type="video/mp4">
+      </video>
+
+      <video id="URGacha" width="1280" height="720" style="display: none;">
+        <source src="./Gacha_Animation/URGacha.mp4" type="video/mp4">
+      </video>
+
+      <button class="functionButton" style="top: 2%; right: 2%; position: absolute; width: 150px; height: 50px" onclick="skipGachaAnimation()">SKIP</button>
+      </div>
+
+      
+      <div id="gachaResultScreen" style="display: none;">
+        <div style="position: absolute; width: 150px; height: 70px; right: 1.5%; top: 2%; font-size: 20px; font-family: Georgia; font-weight: bolder; border: 2px solid black; background-color: rgba(0, 0, 0, 0.8); color: white; z-index: 5;">
+          🪙:<span id="myGold3" style="float: right">1000</span><br>
+          💎:<span id="myDiamond3" style="float: right;">1000</span><br>
+          ☘️:<span id="myBlessing3" style="float: right;">1000</span><br>
+        </div>
+  
+        <div style="position: absolute; top: 15%; width: 100%; height: 10%; font-size: 32px; font-weight: bolder; font-family: Georgia; color: white; text-align: center;">GUARANTEE TO DROP <span style="color:red">LEGENDARY</span> IN <span id="numsOfPullTillGuarantee">20</span> OPENS.</div>
+        <div id="gachaResultDizplay" style="position: absolute; top: 22%; left: 7%; background-color: rgba(0, 0, 0, 0.8); width: 1100px; height: 420px; border: 4px solid gold; border-radius: 5%;">
+
+
+            <table id="gcTable" style="position: relative; top: -3px; left: 24px; border-spacing: 0px 15px;">
+                <tr>
+                  <td class="gachaDataClass" id="gacha0display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha0Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha0Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha0Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+
+                  <td class="gachaDataClass" id="gacha1display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha1Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha1Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha1Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+
+                  <td class="gachaDataClass" id="gacha2display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha2Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha2Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha2Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+
+                  <td class="gachaDataClass" id="gacha3display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha3Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha3Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha3Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+
+                  <td class="gachaDataClass" id="gacha4display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha4Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha4Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha4Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+                  
+                </tr>
+
+                <!---->
+
+                <tr>
+                  <td class="gachaDataClass" id="gacha5display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha5Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha5Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha5Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">RARE</div>
+                  </div>
+                  </td>
+
+                  <td class="gachaDataClass" id="gacha6display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha6Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha6Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha6Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+
+                  <td class="gachaDataClass" id="gacha7display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha7Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha7Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha7Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+
+                  <td class="gachaDataClass" id="gacha8display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha8Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha8Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha8Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+
+                  <td class="gachaDataClass" id="gacha9display">
+                    <div style="width: 180px; height: 180px; text-align: center;">
+                      <div id="gacha9Name" style="position: absolute; width: 180px; height: 20px; font-size: 16px; font-family: Georgia; color: white; font-weight: bolder; text-align: center;">SKYBLASTING TORRENT</div>
+                      <img id="gacha9Img" style="position: relative; width: 110px; height: 110px; top: 36px;" src="./Skill_Icon/sk1.png">
+                      <div id="gacha9Rarity" style="position: relative; width: 180px; height: 20px; top: 35px; font-family: Georgia; color:white; font-size: 21px; font-weight: bolder; text-align: center;">COMMON</div>
+                  </div>
+                  </td>
+                  
+                </tr>
+
+            </table>
+        </div>
+
+        <button class="functionButton" style="width: 15%; height: 6%; bottom: 4%; left: 7%" onmouseenter="playHoverSound()" onclick="IStopGachaHere()">RETURN</button>
+        <button class="functionButton2" style="width: 15%; height: 9%; bottom: 4%; right: 24%" onmouseenter="playHoverSound()" onclick="gachaProceed(1)">OPEN x1<br>(💎 1)</button>
+        <button class="functionButton2" style="width: 15%; height: 9%; bottom: 4%; right: 7%" onmouseenter="playHoverSound()" onclick="gachaProceed(10)">OPEN x10<br>(💎 10)</button>
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!------------------------------------------------>
+
+    <div id="endScreen">
+
+      <span id="declaration" style="position: absolute; font-size: 90px; font-family: fantasy; font-weight: bolder; top: 15%; left: 38%;"> DEFEATED </span>
+      <hr style="border: 2px solid white; position: absolute; top: 29%; left: 38%; width: 25%;">
+
+      <span style="position: absolute; width: 25%; font-size: 20px; font-family: Cambria; font-weight: bold; top: 35%; left: 38%;">SURVIVED ⏱️: <span id="survivalTime" style="float: right;">0</span></span>
+      <br>
+      <hr style="border: 2px dotted white; position: absolute; top: 40.5%; left: 41%; width: 18%; border-radius: 50%;">
+      <span style="position: absolute; width: 25%; font-size: 20px; font-family: Cambria; font-weight: bold; top: 45%; left: 38%;">MONSTER KILLED 💀: <span id="monsterKillCount" style="float: right;">0</span></span>
+      <br>
+      <hr style="border: 2px dotted white; position: absolute; top: 50.5%; left: 41%; width: 18%; border-radius: 50%;">
+      <span style="position: absolute; width: 25%; font-size: 20px; font-family: Cambria; font-weight: bold; top: 55%; left: 38%;">GOLD EARNED 🪙: <span id="goldCount" style="float: right; font-size: 25px;">0</span></span>
+      <span style="position: absolute; width: 25%; font-size: 20px; font-family: Cambria; font-weight: bold; top: 60%; left: 38%;">DIAMOND EARNED 💎: <span id="diamondCount" style="float: right; font-size: 25px;">0</span></span>
+      <br>
+      <hr style="border: 2px dotted white; position: absolute; top: 65.5%; left: 41%; width: 18%; border-radius: 50%;">
+
+      <button id="goToMainMenu" onmouseenter="playHoverSound()" onclick = "goToScreen('endScreen', 'titleScreen')">FINISH</button>
+    </div>
+
+    <!------------------------------------------------>
+
+    <div id="gameScreen">
+ 
+    <div id="screen">
+
+      <canvas id="backgroundCV" style="z-index: 0;"></canvas>
+
+      <canvas id="characterCV" style="z-index: 1;"></canvas>
+
+      <canvas id="animationCV" style="z-index: 2;"></canvas>
+
+      <canvas id="damageCalcCV" style="z-index: 3;"></canvas>
+
+      <canvas id="screenEffectCV" style="z-index:4"></canvas>
+
+    </div>
+
+    <div id="pauseSection" onclick="temporaryPause()"></div>
+
+    <div id="pauseScreen">
+      <button class="functionButton" style="top:20%; left: 22.5%; font-size: 35px; width: 300px; height: 50px" onclick="returnToGame()">CONTINUE</button>
+      <button class="functionButton" style="top:55%; left: 30.5%; font-size: 18px; width: 200px; height: 35px" onclick="surrender()">SURRENDER</button>
+    </div>
+
+    <div id="resources">
+      <br><br>
+      <div id="gold">🪙:<span id="goldAmount" style="float:right;">0</span></div>
+      <div id="diamond">💎: <span id="diamondAmount" style="float: right;">0</span></div>
+      <br>
+      <div id="mk">💀: <span id="monsterKillAmount" style="float: right;">0</span></div>
+    </div>
+
+    <div id="buffScreen" class="prevent-select">
+      <div class="buffCard" id="buff1" onclick="takeBuffCard(0)">
+        <div id="card1Name" class="cardName">HEALTH BLESSING</div>
+        <img id="card1Icon" class="cardIcon" src="BuffIcons/damageBuff.png">
+        <hr class="cardDivider1">
+        <div id="card1Rarity" class="cardRarity">SUPER RARE</div>
+        <hr class="cardDivider2">
+        <div id="card1Info" class="cardInfo">Your bullet now create a lightning ray at the point of impact, dealing 20 damage.</div>
+
+
+        
+      </div>
+
+      <div class="buffCard" id="buff2" onclick="takeBuffCard(1)">
+        <div id="card2Name" class="cardName">HEALTH BLESSING</div>
+        <img id="card2Icon" class="cardIcon" src="BuffIcons/damageBuff.png">
+        <hr class="cardDivider1">
+        <div id="card2Rarity" class="cardRarity">SUPER RARE</div>
+        <hr class="cardDivider2">
+        <div id="card2Info" class="cardInfo">Your bullet now create a lightning ray at the point of impact, dealing 20 damage.</div>
+      </div>
+
+      <div class="buffCard" id="buff3" onclick="takeBuffCard(2)">
+        <div id="card3Name" class="cardName">HEALTH BLESSING</div>
+        <img id="card3Icon" class="cardIcon" src="BuffIcons/damageBuff.png">
+        <hr class="cardDivider1">
+        <div id="card3Rarity" class="cardRarity">SUPER RARE</div>
+        <hr class="cardDivider2">
+        <div id="card3Info" class="cardInfo">Your bullet now create a lightning ray at the point of impact, dealing 20 damage</div>
+      </div>
+
+      <div class="buffCard" id="buff4" onclick="takeBuffCard(3)">
+        <div id="card4Name" class="cardName">HEALTH BLESSING</div>
+        <img id="card4Icon" class="cardIcon" src="BuffIcons/damageBuff.png">
+        <hr class="cardDivider1">
+        <div id="card4Rarity" class="cardRarity">SUPER RARE</div>
+        <hr class="cardDivider2">
+        <div id="card4Info" class="cardInfo">Your bullet now create a lightning ray at the point of impact, dealing 20 damage</div>
+      </div>
+
+      <button id="reroll" onclick="reroll()">REROLL x<span id="rerollTimes">1</span></button>
+    </div>
+
+    <div id="tutorial">
+      <br>
+      MOUSE: Aim (Fire automatically)<br>
+      A, D: Move Left & Right<br>
+      W: Jump<br>
+      1, 2, 3: Use Skill.<br>
+      4: Use Gemstone Skill (if equipped)<br>
+
+    </div>
+
+
+    <div id="buffStats">
+      <div style="position: absolute; width: 100%; left: 32%; font-size: 20px;">BLESSED STATS</div>
+    <div id="buffStats1">
+      DAMAGE: <span style="float:right">+<span id="damageBuff">0</span>%</span><br>
+      FIRE RATE <span style="float:right">+<span id="fireRateBuff">0</span>%</span><br>
+      BULLET SPD: <span style="float:right">+<span id="bulletSpeedBuff">0</span>%</span><br>
+      HEALTH: <span style="float:right">+<span id="healthBuff">0</span>%</span><br>
+      RECOVERY: <span style="float:right">+<span id="recoveryBuff">0</span>%</span><br>
+
+      
+    </div>
+
+    <div id="buffStats2">
+      COOLDOWN: <span style="float:right">- <span id="CDBuff">0</span>s</span><br>
+      SPEED: <span style="float:right">+<span id="speedBuff">0</span>%</span><br>
+      JUMP: <span style="float:right">+<span id="jumpBuff">0</span>%</span><br>
+      AMOUNT: <span style="float:right">+ <span id="amountBuff">0</span></span><br>
+      GOLD: <span style="float:right">+<span id="goldBuff">0</span>%</span><br>
+    </div>
+    </div>
+
+    <div id="controlBoard">
+
+      <div id="mainWeapon">
+
+        <button class="skillButton" id="weapon_main"></button>
+
+      </div>
+
+      <div id="healthBar">
+        <div id="hpDisplay"></div>
+        <div id="hpStatus">PLAYER HP: <span id="currHP">20000</span> / <span id="maxHP">20000</span></div>
+      </div>
+      
+      <div id="baseHP">
+        <div id="baseHPDisplay"></div>
+        <div id="baseHPStatus">STATUE HP: <span id="currBaseHP">7</span> / <span id="maxBaseHP">7</span></div>
+      </div>
+
+
+      <div id="skillBar">
+
+        <button class="skillButton" id="skill1">
+          
+        </button>
+
+        <button class="skillButton" id="skill2">
+          
+        </button>
+
+        <button class="skillButton" id="skill3">
+          
+        </button>
+
+      </div>
+
+      <div id="ultBar">
+
+        <button class="skillButton" id="gemSkill">
+          
+        </button>
+
+      </div>
+
+    </div>
+</div>
+
+<!------------------------------------------------>
+
+
+<!-- SOUND EFFECTS-->
+
+<!--MAIN SCREEN-->
+
+<audio id="buttonOnHover" src="./Music/ButtonHover.mp3" type="audio/mpeg"></audio>
+
+<audio id="titleMusic" loop >
+  <source src="./Music/Title.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="gachaResultSE" src="./Music/gachaResult.mp3" type="audio/mpeg"></audio>
+
+<audio id="battleMusic" loop >
+  <source src="./Music/Battle.ogg" type="audio/mpeg">
+</audio>
+
+<audio id="bulletSoundSE" src="./Music/BulletSound.mp3" type="audio/mpeg"></audio>
+<audio id="impactSE" src="./Music/HitSound.mp3" type="audio/mpeg"></audio>
+
+<audio id="playerRankUp" src="./Music/levelUp.mp3" type="audio/mpeg"></audio>
+<audio id="monsterStronger" src="./Music/monsterPowerUp.mp3" type="audio/mpeg"></audio>
+
+<audio id="gameVictory" src="./Music/gameWin.mp3" type="audio/mpeg"></audio>
+<audio id="gameDefeated" src="./Music/gameLose.mp3" type="audio/mpeg"></audio>
+
+<audio id="equipSound" src="./Music/equip.wav" type="audio/wav"></audio>
+
+<audio id="skill0Audio" src="" type="audio/wav"></audio>
+<audio id="skill1Audio" src="" type="audio/wav"></audio>
+<audio id="skill2Audio" src="" type="audio/wav"></audio>
+<audio id="skill3Audio" src="" type="audio/wav"></audio>
+
+<audio id="lightningStrike" src="./Music/lightningSound.wav" type="audio/wav"></audio>
+
+
+
+<!--GAME SOUNDS-->
+
+
+<!--Here is main screen ends-->
+ </div>
+ </div>
+
+
+  <script src="./Utility/Camera.js"></script>
+  <script src="./Utility/Sprite.js"></script>
+  <script src="./Utility/Player.js"></script>
+  <script src="./Utility/Characters.js"></script>
+  <script src="./Utility/Bullet.js"></script>
+	<script src="./Utility/mainGame.js"></script>
+  <script src="./Utility/Skills.js"></script>
+  <script src="./Utility/Weapon.js"></script>
+  <script src="./Utility/Gemstone.js"></script>
+  <script src="./Utility/saveFunctions.js"></script>
+  <script src="./Utility/Shop.js"></script>
+  <script src="./Utility/Buffs.js"></script>
+  <script src="./Utility/EnemiesData.js"></script>
+  <script src="./Utility/index.js"></script>
+  </body>
+
+</html>
+
+
