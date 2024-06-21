@@ -6,7 +6,9 @@
 ## 1. DESCRIPTION:
 
 Gashamage is a 2D browser game, where players are a mage trying to defend a holy structure. The more monster the player slays, the stronger they will be.
+
 Upon reaching a certain number of kills, the player receives a blessing of their choice that makes them stronger.
+
 Additionally, they can bring 3 skills along to aid them in battle. These skills are unlocked either through gacha or through purchase.
 
 ![Art1](https://github.com/lehuykhanh41/Gashamage/blob/main/BattleIMG.png)
