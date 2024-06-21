@@ -1,5 +1,5 @@
-# GASHAMAGE - A BROWSER GAME BY KHANH LE.
-## CURRENTLY PUBLISHED AT [ITCH.IO](https://vibingdeveloper.itch.io/gashamage)
+# GASHAMAGE - A BROWSER GAME MADE BY KHANH LE.
+## CURRENTLY BEING PUBLISHED AT [ITCH.IO](https://vibingdeveloper.itch.io/gashamage)
 
 ![Cover Art](https://github.com/lehuykhanh41/Gashamage/blob/main/GSMCover.png)
 
@@ -19,6 +19,9 @@ No installation needed. The game is hosted online at [itch.io](https://vibingdev
 ## 4. SCREENSHOTS:
 
 ![Art1](https://github.com/lehuykhanh41/Gashamage/blob/main/BattleIMG.png)
+![Art2](https://github.com/lehuykhanh41/Gashamage/blob/main/GachaIMG.png)
+![Art3](https://github.com/lehuykhanh41/Gashamage/blob/main/SkillEquipz.png)
+
 
 
 ## THANK YOU FOR PLAYING !
