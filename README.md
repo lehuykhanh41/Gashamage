@@ -5,7 +5,13 @@
 
 ## 1. DESCRIPTION:
 
-Gashamage is a 2D browser game, where players are a mage trying to defend a holy structure. The more monster the players slay, the stronger they will be. 
+Gashamage is a 2D browser game, where players are a mage trying to defend a holy structure. The more monster the player slays, the stronger they will be.
+Upon reaching a certain number of kills, the player receives a blessing of their choice that makes them stronger.
+Additionally, they can bring 3 skills along to aid them in battle. These skills are unlocked either through gacha or through purchase.
+
+![Art1](https://github.com/lehuykhanh41/Gashamage/blob/main/BattleIMG.png)
+![Art2](https://github.com/lehuykhanh41/Gashamage/blob/main/GachaIMG.png)
+![Art3](https://github.com/lehuykhanh41/Gashamage/blob/main/SkillEquipz.png)
 
 ## 2. INSTALLATION:
 
@@ -15,13 +21,6 @@ No installation needed. The game is hosted online at [itch.io](https://vibingdev
 - Pure Javascript, Phaser 3, HTML and CSS.
 - Sprites are purchased from various artists.
 - The whole game (except for arts) were 100% built from scratch.
+---
 
-## 4. SCREENSHOTS:
-
-![Art1](https://github.com/lehuykhanh41/Gashamage/blob/main/BattleIMG.png)
-![Art2](https://github.com/lehuykhanh41/Gashamage/blob/main/GachaIMG.png)
-![Art3](https://github.com/lehuykhanh41/Gashamage/blob/main/SkillEquipz.png)
-
-
-
-## THANK YOU FOR PLAYING !
+# THANK YOU SO MUCH FOR PLAYING !
